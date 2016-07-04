@@ -5,10 +5,13 @@
 
 .ui-icon{
     text-indent: 0;
-    margin-top: -8px;
     font-family: 'Material Icons';
     background: none;
     color: black;
+    text-transform: none;
+    letter-spacing: normal;
+    /* Support for IE. */
+    font-feature-settings: 'liga';
 }
 
 .ui-icon-close:before{
@@ -16,13 +19,10 @@
     content: 'close';
 }
 
-.ui-icon-close{
-    font-family: 'Material Icons';
-}
-
 .ui-messages-error-icon{
     margin-top: -8px;
     background: none;
+    font-feature-settings: 'liga';
 }
 
 .ui-messages-error-icon:before{

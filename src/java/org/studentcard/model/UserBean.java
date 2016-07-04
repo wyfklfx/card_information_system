@@ -1,9 +1,9 @@
 package org.studentcard.model;
 
-import javax.inject.Named;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import org.studentcard.bundle.BundleUtil;
@@ -14,7 +14,7 @@ import org.studentcard.database.control.SystemDBHelperBean;
  *
  * @author Zhou Shengyun <GGGZ-1101-28@Live.cn>
  */
-@Named(value = "userBean")
+@ManagedBean(name = "userBean")
 @ViewScoped
 public class UserBean implements Serializable {
     private String userID;

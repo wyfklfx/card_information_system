@@ -6,6 +6,7 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
         <f:metadata>
             <c:if test="#{empty sessionScope.user}">
                 <f:viewAction action="redirect_login"/>
