@@ -1,16 +1,48 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    
     <h:head>
-        <title>Facelet Title</title>
-        <link rel="stylesheet" type="text/css" href="/card_information_system/faces/jsfcrud.css" />
+        <title>#{bundle.AppName}</title>
     </h:head>
+
     <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces 欢迎使用页" />
+        <ui:include src="header.xhtml"/>
+        
+        <div id="login-panel" class="card">
+            <span class="card-title">#{bundle.SystemLogin}</span>
+            <h:form id="login-from">
+                <div class="row" style="margin-bottom: 0">
+                    <div class="input-field col s12" style="margin-top: 30px">
+                        <i class="material-icons prefix">person</i>
+                        <h:inputText id="login_phone_number" class="validate" value="#{userBean.userID}"
+                                     required="true" requiredMessage="#{bundle.TipInputUserID}"/>
+                        <label for="login_phone_number">#{bundle.UserID}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 0">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">vpn_key</i>
+                        <h:inputSecret id="login_password" class="validate" value="#{userBean.password}"
+                                    required="true" requiredMessage="#{bundle.TipInputPassword}"/>
+                        <label for="login_password">#{bundle.Password}</label>
+                    </div>
+                </div>
+                <p:messages id="login_error_message" autoUpdate="false" closable="true"/>
+                <div style="text-align: center">
+                    <p:commandButton styleClass="submit-button btn waves-effect waves-light light-green" type="submit"
+                                     value="#{bundle.Login}" action="#{userBean.login}" update="login_error_message">
+                    </p:commandButton>
+                </div>
+            </h:form>
+        </div>
+        
+        <ui:include src="footer.xhtml"/>
     </h:body>
-
 </html>
-
