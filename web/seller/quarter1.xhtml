@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -100,4 +101,101 @@
         </div>
         <ui:include src="/footer.xhtml"/>
     </h:body>
+=======
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <f:metadata>
+            <c:if test="#{empty sessionScope.user}">
+                <f:viewAction action="redirect_login"/>
+            </c:if>
+        </f:metadata>
+        <title>#{bundle.AppName}</title>
+    </h:head>
+    <h:body>
+        <ui:include src="/header.xhtml"/>
+        
+        <div>
+            
+            <h:form id="form">  
+                <p:growl id="calendar_input" showDetail="true" />
+                <p:calendar id="popup" readonlyInput="true" value="#{queryBean.date}"/> 
+                <p:commandButton styleClass="submit-button btn waves-effect waves-light light-green" 
+                        value="提交" id ="submit" action="calendarRecord"/>
+            </h:form>  
+            
+            
+            <h:form>
+            <p:megaMenu orientation="horizontal" style="margin-top:10px" >
+                <p:menuitem value="今日记录" url="current.xhtml" />
+                <p:submenu label="按季度查询">
+                    <p:column>
+                        <p:submenu label="第一季度">
+                            <p:menuitem value="Jan.-Mar." url="quarter1.xhtml"/>
+                        </p:submenu>
+                         <p:submenu label="第二季度">
+                            <p:menuitem value="Apr.-Jun." url="quarter2.xhtml"/> 
+                        </p:submenu>
+                    </p:column>
+                   
+                    <p:column>
+                        <p:submenu label="第三季度">
+                            <p:menuitem value="Jul.-Sep." url="quarter3.xhtml"/>
+                        </p:submenu>
+                         <p:submenu label="第四季度">
+                            <p:menuitem value="Oct.-Dec." url="quarter4.xhtml"/>
+                        </p:submenu>
+                    </p:column>
+                </p:submenu>
+                <p:menuitem value="历史记录" url="history.xhtml" />
+            </p:megaMenu>
+            </h:form>
+        </div>            
+               
+        <div>
+            <br></br>
+            <br></br>
+            <br></br>
+        </div>
+        
+        <div style="background-color:rgba(70,130,180,0.2);text-align: center">
+        <h:form style="text-align: center">
+            <p:dataTable var="quarter1" value="#{quarterBean.quarter1}">
+                <p:column headerText="StudentID">
+                    <h:outputText value="#{quarter1.student.studentID}"/>
+                </p:column>
+            
+                <p:column headerText="Date">
+                    <h:outputText value="#{quarter1.consumeRecordPK.consumeTime}">
+                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss"/>
+                    </h:outputText>
+                </p:column>
+            
+                <p:column headerText="ShopName">
+                    <h:outputText value="#{quarter1.shopID.shopName}"/>
+                </p:column>
+            
+                <p:column headerText="Balance">
+                    <h:outputText value="#{quarter1.balance}"/>
+                </p:column>
+            </p:dataTable>
+            
+            <div>
+                <br></br>
+            </div>
+        <div style="text-align: center">
+        <p:commandButton styleClass="submit-button btn waves-effect waves-light light-green" value="返回" id ="historyBack" action="seller_index"/>
+        </div>
+        </h:form>
+        </div>
+        <ui:include src="/footer.xhtml"/>
+    </h:body>
+>>>>>>> 5332c4b72a826b09dcb046aacf230bf907c408ff
 </html>

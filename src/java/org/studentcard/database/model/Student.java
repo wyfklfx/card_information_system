@@ -1,12 +1,16 @@
 package org.studentcard.database.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -42,7 +46,22 @@ public class Student implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "Name")
     private String name;
-
+    
+    @OneToOne(fetch = FetchType.LAZY,mappedBy = "student")
+    private StudentCard studentCardInfo;
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
+    private List<ConsumeRecord> consumeRecordList;
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
+    private List<LossReportRecord> lossReportRecordList;
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
+    private List<RefundRecord> refundRecordList;
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
+    private List<TopUpRecord> topUpRecordList;
+            
     public Student() {
     }
 
@@ -104,5 +123,28 @@ public class Student implements Serializable {
     public String toString() {
         return "org.studentcard.model.Student[ studentID=" + studentID + " ]";
     }
+
+    public List<ConsumeRecord> getConsumeRecordList() {
+        return consumeRecordList;
+    }
+
+    public List<LossReportRecord> getLossReportRecordList() {
+        return lossReportRecordList;
+    }
+
+    public List<RefundRecord> getRefundRecordList() {
+        return refundRecordList;
+    }
+
+    public List<TopUpRecord> getTopUpRecordList() {
+        return topUpRecordList;
+    }
+
+    public StudentCard getStudentCardInfo(){
+        return studentCardInfo;
+    }
+    /*public List<LossReportRecord> getLossRecordList() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }*/
     
 }

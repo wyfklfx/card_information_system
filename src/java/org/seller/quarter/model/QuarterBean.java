@@ -142,6 +142,7 @@ public void init(){
     }
     
     
+<<<<<<< HEAD
     public float getQuarterBalance1(){
         float balance1 = 0;
         System.out.println(resulltList1.size());
@@ -181,5 +182,10 @@ public void init(){
         }
         return balance4;
     }
+=======
+    
+    
+    
+>>>>>>> 5332c4b72a826b09dcb046aacf230bf907c408ff
     
 }

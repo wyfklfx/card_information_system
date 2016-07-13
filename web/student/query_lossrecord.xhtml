@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <f:metadata>
+            <c:if test="#{empty sessionScope.user}">
+                <f:viewAction action="redirect_login"/>
+            </c:if>
+        </f:metadata>
+        <title>#{bundle.AppName}</title>
+    </h:head>
+    <h:body>
+       <div id="Layer4" style="position:absolute; left:0px; top:0px; width:100%; height:100%;z-index:-1">  
+            <img src="11.jpg" width="100%" height="100%"/>  
+        </div>  
+        <ui:include src="/header.xhtml"/>
+        <br />
+        <marquee behavior="alternate" scrollamount="6" direction="right" width="60%">
+        <font color="FA8072" size="5" align="center">挂失存根</font>
+        </marquee>
+        <br />
+        <table border="1" cellspacing="10" cellpadding="10">
+            <tr>
+                <th>Date</th>
+                <th>NewCardID</th>
+            </tr>
+            <c:forEach items="#{studentBean.lossRecordList}" var="l">
+                <tr>
+                    <td>
+                        <h:outputText value="#{l.lossReportRecordPK.lossReportTime}">
+                            <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" />
+                        </h:outputText>
+                    </td>
+                    <td>#{l.laterStudentCardID}</td>
+                </tr>
+            </c:forEach>
+        </table>
+        &nbsp;&nbsp;&nbsp;<a href="student_index.xhtml"><button style="background: #FAEBD7;border-radius:5px;">back</button></a>
+        <div id="footer" style="background-color:#3299CC;clear:both;text-align:center;">
+                 &copy;Copyright 2015-2016. All Rights Reserved.
+        </div>
+    </h:body>
+</html>
+

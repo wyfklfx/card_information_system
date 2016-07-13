@@ -73,6 +73,7 @@ public List<ConsumeRecord> getInfos() {
 
     return resulltList;
 }
+<<<<<<< HEAD
 
 public float getBalance(){
     float balance = 0;
@@ -83,6 +84,8 @@ public float getBalance(){
     }
     return balance;
 }
+=======
+>>>>>>> 5332c4b72a826b09dcb046aacf230bf907c408ff
    
 public QueryBean(){
   date = new Date();
