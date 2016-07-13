@@ -18,15 +18,8 @@
     <h:body>
         <ui:include src="/header.xhtml"/>
         <div>
-           <h:form id="form">  
-                <p:growl id="calendar_input" showDetail="true" />
-                <p:calendar id="popup" readonlyInput="true" value="#{queryBean.date}"/> 
-                <p:commandButton styleClass="submit-button btn waves-effect waves-light light-green" 
-                        value="提交" id ="submit" action="calendarRecord"/>
-            </h:form>  
-           
             <h:form>
-                <p:megaMenu orientation="horizontal" style="margin-top:10px">
+            <p:megaMenu orientation="horizontal" style="margin-top:10px">
                 <p:submenu label="按季度查询">
                     <p:column>
                         <p:submenu label="第一季度">
@@ -47,17 +40,48 @@
                     </p:column>
                 </p:submenu>
                 <p:menuitem value="历史记录" url="history.xhtml" />
-            </p:megaMenu>
-            </h:form> 
-        </div>        
-                
-        <div id="container">
-            <p:contentFlow value ="#{imagesView.images}" var ="image" style="background-color:rgba(70,130,180,0.2)">
-                <p:graphicImage name="images/#{image}" styleClass="content"/>
-                    <div id="index" class ="caption" style="margin:70px 0px">#{image}</div>
-            </p:contentFlow>
-        </div>       
+            </p:megaMenu> 
+            </h:form>
+        </div>
+        
+        <div>
+            <br></br>
+            <br></br>
+            <br></br>
+        </div>
+        
+        
+        
+         <div style="background-color:rgba(70,130,180,0.2);text-align: center">
+            
+        <h:form style="text-align: center">
+            <p:dataTable var="calendarQueryInfo" value="#{queryBean.infos}">
+                <p:column headerText="StudentID">
+                    <h:outputText value="#{calendarQueryInfo.student.studentID}"/>
+                </p:column>
+            
+                <p:column headerText="Date">
+                    <h:outputText value="#{calendarQueryInfo.consumeRecordPK.consumeTime}">
+                    <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss"/>
+                    </h:outputText>
+                </p:column>
+            
+                <p:column headerText="ShopName">
+                    <h:outputText value="#{calendarQueryInfo.shopID.shopName}"/>
+                </p:column>
+            
+                <p:column headerText="Balance">
+                    <h:outputText value="#{calendarQueryInfo.balance}"/>
+                </p:column>
+            </p:dataTable>
+            <div>
+                <br></br>
+            </div>
+        <div style="text-align: center">
+        <p:commandButton styleClass="submit-button btn waves-effect waves-light light-green" value="返回" id ="calendarQueryBack" action="seller_index"/>
+        </div>
+        </h:form>
+        </div>
         <ui:include src="/footer.xhtml"/>
     </h:body>
 </html>
- 

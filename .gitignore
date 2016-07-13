@@ -2,3 +2,5 @@
 nbproject/*
 build/*
 build.xml
+/card_information_system/build/
+/card_information_system/dist/

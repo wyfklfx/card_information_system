@@ -54,7 +54,7 @@ public class Seller implements Serializable {
 
     public Seller(Integer sellerID) {
         this.sellerID = sellerID;
-    }
+    } 
 
     public Seller(Integer sellerID, String password, String name) {
         this.sellerID = sellerID;

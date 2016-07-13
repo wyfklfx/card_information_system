@@ -31,4 +31,7 @@
     content: 'cancel';
 }
 
-
+.ui-datepicker,
+.ui-menu-list{
+    background-color: white;
+}
