@@ -73,6 +73,16 @@ public List<ConsumeRecord> getInfos() {
 
     return resulltList;
 }
+
+public float getBalance(){
+    float balance = 0;
+    System.out.println(resulltList.size());
+    for(ConsumeRecord record :resulltList){
+       balance +=  record.getBalance();
+        System.out.println(balance);
+    }
+    return balance;
+}
    
 public QueryBean(){
   date = new Date();

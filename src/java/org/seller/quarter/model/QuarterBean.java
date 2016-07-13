@@ -142,8 +142,44 @@ public void init(){
     }
     
     
+    public float getQuarterBalance1(){
+        float balance1 = 0;
+        System.out.println(resulltList1.size());
+        for(ConsumeRecord record :resulltList1){
+            balance1 +=  record.getBalance();
+            System.out.println(balance1);
+        }
+        return balance1;
+    }
     
-    
-    
+    public float getQuarterBalance2(){
+        float balance2 = 0;
+        System.out.println(resulltList2.size());
+        for(ConsumeRecord record :resulltList2){
+            balance2 +=  record.getBalance();
+            System.out.println(balance2);
+        }
+        return balance2;
+    }
+      
+    public float getQuarterBalance3(){
+        float balance3 = 0;
+        System.out.println(resulltList3.size());
+        for(ConsumeRecord record :resulltList3){
+            balance3 +=  record.getBalance();
+            System.out.println(balance3);
+        }
+        return balance3;
+    }
+       
+    public float getQuarterBalance4(){
+        float balance4 = 0;
+        System.out.println(resulltList4.size());
+        for(ConsumeRecord record :resulltList4){
+            balance4 +=  record.getBalance();
+            System.out.println(balance4);
+        }
+        return balance4;
+    }
     
 }

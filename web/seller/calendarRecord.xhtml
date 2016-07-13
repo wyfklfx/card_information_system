@@ -78,9 +78,16 @@
                 <br></br>
             </div>
         <div style="text-align: center">
-        <p:commandButton styleClass="submit-button btn waves-effect waves-light light-green" value="返回" id ="calendarQueryBack" action="seller_index"/>
+            <p:commandButton styleClass="submit-button btn waves-effect waves-light light-green" value="返回" id ="calendarQueryBack" action="seller_index"/>
         </div>
         </h:form>
+        </div>
+        
+        <div>
+            <br></br>
+            <h:outputLabel value="总营业额为：">
+                <h:outputText value="#{queryBean.balance}" />
+            </h:outputLabel>
         </div>
         <ui:include src="/footer.xhtml"/>
     </h:body>
