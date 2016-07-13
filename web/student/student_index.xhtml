@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
         <f:metadata>
@@ -13,9 +14,32 @@
             </c:if>
         </f:metadata>
         <title>#{bundle.AppName}</title>
+        
     </h:head>
     <h:body>
         <ui:include src="/header.xhtml"/>
+        <div id="container" style="right:100%">
+            <div id="header" style="background-color:#B0C4DE;">
+                <marquee behavior="alternate">
+                    <font color="FFF5EE" size="7" align="center">Hello,#{sessionScope.user.name}.O(∩_∩)O</font>
+                </marquee> 
+            </div>
+                <div id="fillgap" style="background-color:#B0C4DE;height:520px;width:20%;float:left;">
+                    <br /><br />
+                    &nbsp;&nbsp;&nbsp;<a href="query_balance.xhtml"><button style="background: #FAEBD7;border-radius:5px; ">查询余额</button></a><br /><br />
+                    &nbsp;&nbsp;&nbsp;<a href="query_consumption.xhtml"><button style="background: #FAEBD7;border-radius:5px;">账单记录</button></a><br /><br />
+                    &nbsp;&nbsp;&nbsp;<a href="query_refund.xhtml"><button style="background: #FAEBD7;border-radius:5px;">退款通知</button></a><br /><br />
+                    &nbsp;&nbsp;&nbsp;<a href="query_topup.xhtml"><button style="background: #FAEBD7;border-radius:5px;">充值提醒</button></a><br /><br />
+                    &nbsp;&nbsp;&nbsp;<a href="query_lossrecord.xhtml"><button style="background: #FAEBD7;border-radius:5px;">挂失存根</button></a><br /><br />
+                </div>
+            <div id="content" style="background-color:#E0FFFF;height:520px;width:60%;float:left;">
+                <img  src="1.jpg" height="520px" width="100%"></img>
+            </div>
+            <div id="fillgap" style="background-color:#B0C4DE;height:520px;width:20%;float:left;"></div>
+            <div id="footer" style="background-color:#3299CC;clear:both;text-align:center;">
+                 &copy;Copyright 2015-2016. All Rights Reserved.
+            </div>
+        </div>
     </h:body>
 </html>
 
