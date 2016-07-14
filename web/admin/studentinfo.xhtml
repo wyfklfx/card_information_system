@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <f:metadata>
+            <c:if test="#{empty sessionScope.user}">
+                <f:viewAction action="redirect_login"/>
+            </c:if>
+        </f:metadata>
+        <title>#{bundle.AppName}</title>
+        <style>
+            #addstu-panel{
+            margin-top:50px;
+            width: 400px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <ui:include src="/admin/admin_header.xhtml"/>
+        <div id="addstu-panel">
+            <h:form>
+            <p:messages id="student-query-msg"/>
+            <h:panelGrid columns="2">    
+                <h:outputText value="学号：" />
+                <h:inputText id="学号" value="#{controlStu.sstudentID}" required="true"/>
+                <p:commandButton value="查询" actionListener="#{controlStu.findStuAndCard}" update="student-query-msg student-info-panel"
+                                     type="submit"/>
+                <p:commandButton value="注册" actionListener="#{controlStu.studentRegister}" update="student-query-msg student-info-panel"/>
+                <p:commandButton value="挂失" actionListener="#{controlStu.lossReport}" update="student-query-msg student-info-panel"/>
+            </h:panelGrid>
+            <h:panelGrid columns="2">
+                <h:outputText value="金额："/>
+                <h:inputText value="#{controlStu.smoney}"/>
+                <p:commandButton value="充值" actionListener="#{controlStu.topUp}" update="student-query-msg student-info-panel" type="submit"/>
+                <p:commandButton value="退款" actionListener="#{controlStu.refund}" update="student-query-msg student-info-panel"/>
+            </h:panelGrid>
+            </h:form>
+        </div>
+        <br/>
+        
+        <p:outputPanel id="student-info-panel" style="text-align: center">
+            <p:dataTable var="stuCard" value="#{controlStu.stuCard}">
+                <p:column headerText="学号">
+                    <h:outputText value="#{stuCard.studentID}"/>
+                </p:column>
+ 
+                <p:column headerText="余额">
+                   <h:outputText value="#{stuCard.balance}"/>
+                </p:column>
+            </p:dataTable>
+            <br/>
+            
+            <p:dataTable var="topups" value="#{controlStu.topups}">
+                <p:column headerText="充值时间">
+                    <h:outputText value="#{topups.getTopUpRecordPK().topUpTime}"/>
+                </p:column>
+                <p:column headerText="充值金额">
+                    <h:outputText value="#{topups.balance}"/>
+               </p:column>
+            </p:dataTable>
+            <br/>
+        
+            <p:dataTable var="refunds" value="#{controlStu.refunds}">
+                <p:column headerText="退款时间">
+                   <h:outputText value="#{refunds.refundRecordPK.refundTime}"/>
+                </p:column>
+                <p:column headerText="退款金额">
+                   <h:outputText value="#"/>
+               </p:column>
+            </p:dataTable>
+            <br/>
+            
+            <p:dataTable var="lossReports" value="#{controlStu.lossreports}">
+                <p:column headerText="挂失时间">
+                    <h:outputText value="#{lossReports.lossReportRecordPK.lossReportTime}"/>
+                </p:column>
+            </p:dataTable>
+        </p:outputPanel>  
+    </h:body>
+</html>
+

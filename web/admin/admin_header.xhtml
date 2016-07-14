@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    
+<f:view>
+    <h:outputScript library="js" name="materialize.js"/>
+    <h:outputStylesheet library="css" name="material_icon.css"/>
+    <h:outputStylesheet library="css" name="materialize.css"/>
+    <h:outputStylesheet library="css" name="primefaces.css"/>
+    <h:outputStylesheet library="css" name="style.css"/>
+</f:view>
+    
+<nav>
+    <div class="nav-wrapper light-blue">
+        <div id="titlebar">
+            <span>#{bundle.AppName}<i class="material-icons left">payment</i></span>
+        </div>.
+        <ul class="right hide-on-med-and-down">
+            <c:if test="#{facesContext.viewRoot.viewId != '/index.xhtml'}">
+                <li>
+                    <a id="header-user-dropdown" class='dropdown-button waves-effect waves-light' data-activates='header-user-menu'
+                       data-beloworigin="true" data-hover="true">#{sessionScope.user.name}
+                        <i class="material-icons left">account_circle</i>
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+
+                    <ul id='header-user-menu' class="dropdown-content" style="min-width: 200px">
+                        <li class="waves-effect user-menu-item">
+                            <div>
+                                <h:form>
+                                    <i class="material-icons red-text" style="float: left; height: 50px; line-height: 50px">power_settings_new</i>
+                                    <p:commandButton styleClass="btn transparent z-depth-0 black-text" value="#{bundle.Logout}"
+                                                     style="float: left; height: 50px; line-height: 50px; text-align: left; padding: 0"
+                                                     actionListener="#{userBean.logout}" oncomplete="document.location.href = '#{facesContext.externalContext.applicationContextPath}';">
+                                    </p:commandButton>
+                                </h:form>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </c:if>
+            <li>
+                <p:clock id="time-text" pattern="yyyy-MM-dd HH:mm" autoSync="false" mode="server" syncInterval="60000"/>
+                <i class="material-icons left" style="margin-left: 10px">schedule</i>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<p:ajaxExceptionHandler type="javax.faces.application.ViewExpiredException"
+                        onexception="$('#exception-modal').openModal({dismissible: false});"/>
+
+<div id="exception-modal" class="modal">
+    <div class="modal-content">
+        <p>#{bundle.TipPageOutDate}</p>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-action modal-close waves-effect waves-green btn-flat"
+           onclick="document.location.href = document.location.href;">#{bundle.Refresh}
+            <i class="material-icons left" style="font-size: 24px">refresh</i>
+        </a>
+    </div>
+</div>
+<div>
+<h:form>  
+    <p:growl id="messages"/>
+ 
+    <p:menubar id="mymenu">
+        <p:submenu label="查询记录" icon="ui-icon-document" >
+            <p:menuitem value="学生" url="studentinfo.xhtml"  />
+            <p:menuitem value="卖家" url="sellerinfo.xhtml" />
+        </p:submenu>
+         <p:menuitem value="我的信息" action="admin_index.xhtml" />
+    </p:menubar>
+</h:form>
+</div>
+</html>
+
